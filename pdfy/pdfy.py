@@ -17,10 +17,12 @@ except:
 
 
 class Pdfy():
-    def __init__(self, executable_path=None, debug_port=9222):
+    def __init__(self, executable_path=None, debug_port=9222, arguments=None):
         chrome_options = Options()
         chrome_options.add_argument("--remote-debugging-port=" + str(debug_port))
         chrome_options.add_argument("--headless")
+        for arg in arguments:
+            chrome_options.add_argument(arg)
 
         webdriver_params = {
             'chrome_options': chrome_options
